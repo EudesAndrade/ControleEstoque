@@ -1,46 +1,36 @@
+using ControleEstoque.Infrastructure;
+using System.Data;
+using MySqlConnector;
+using Dapper;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Adicionar serviço de conexão ao banco de dados MySQL usando Dapper
+builder.Services.AddSingleton<DapperContext>();
+builder.Services.AddScoped<IDbConnection>(sp =>
+    new MySqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure o pipeline HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-var summaries = new[]
+// Exemplo de endpoint para verificar a conexão com o banco de dados
+app.MapGet("/test-connection", async (DapperContext dbContext) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+    using var connection = dbContext.CreateConnection();
+    var result = await connection.ExecuteScalarAsync<int>("SELECT 1");
+    return result == 1 ? Results.Ok("Conexão com o banco de dados está funcionando!") : Results.Problem("Falha na conexão");
 })
-.WithName("GetWeatherForecast")
+.WithName("TestDatabaseConnection")
 .WithOpenApi();
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-
-
-
-
-}
