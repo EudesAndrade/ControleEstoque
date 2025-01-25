@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlEstoque", "ControlEstoque.csproj", "{DE2F9FDC-B7B2-4D37-B48D-359928F0A275}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Tests", "..\ControleEstoque.Tests\ControleEstoque.Tests.csproj", "{961E2C83-6F72-432B-B34E-C1E9AC74AAEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Application", "..\ControleEstoque.Application\ControleEstoque.Application.csproj", "{087DA412-B170-4A89-A617-C8A77B57A6BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{DE2F9FDC-B7B2-4D37-B48D-359928F0A275}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE2F9FDC-B7B2-4D37-B48D-359928F0A275}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE2F9FDC-B7B2-4D37-B48D-359928F0A275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{961E2C83-6F72-432B-B34E-C1E9AC74AAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961E2C83-6F72-432B-B34E-C1E9AC74AAEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{961E2C83-6F72-432B-B34E-C1E9AC74AAEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{961E2C83-6F72-432B-B34E-C1E9AC74AAEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{087DA412-B170-4A89-A617-C8A77B57A6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{087DA412-B170-4A89-A617-C8A77B57A6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{087DA412-B170-4A89-A617-C8A77B57A6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{087DA412-B170-4A89-A617-C8A77B57A6BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
