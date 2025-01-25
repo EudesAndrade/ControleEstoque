@@ -1,0 +1,9 @@
+# Ignorar arquivos de build e configuração
+ControlEstoque/bin/
+ControlEstoque/obj/
+ControlEstoque/.vs/
+.vs/
+
+# Ignorar arquivos específicos
+*.exe
+*.dll
