@@ -1,8 +1,6 @@
 ﻿using System.Data;
-using MySqlConnector;  // Certifique-se que o pacote MySqlConnector está instalado
+using MySqlConnector;
 using Microsoft.Extensions.Configuration;
-
-
 
 namespace ControleEstoque.Infrastructure
 {
@@ -15,10 +13,6 @@ namespace ControleEstoque.Infrastructure
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        public  IDbConnection CreateConnection()
-        {
-            return new MySqlConnection(_connectionString);
-        }
-        //IDbConnection CreateConnection() => new MySqlConnection(_connectionString);
+        public IDbConnection CreateConnection() => new MySqlConnection(_connectionString);
     }
 }

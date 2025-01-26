@@ -1,6 +1,9 @@
-﻿using ControleEstoque.Application.Commands.Produto;
+﻿using MediatR;
 using ControleEstoque.Infrastructure;
-using MediatR;
+using System.Data;
+using System.Threading;
+using System.Threading.Tasks;
+using ControleEstoque.Application.Commands.Produto;
 using Dapper;
 
 public class CreateProdutoCommandHandler : IRequestHandler<CreateProdutoCommand, int>
@@ -14,11 +17,8 @@ public class CreateProdutoCommandHandler : IRequestHandler<CreateProdutoCommand,
 
     public async Task<int> Handle(CreateProdutoCommand request, CancellationToken cancellationToken)
     {
-        var connection = _context.CreateConnection();
-        var query = "INSERT INTO Produtos (Nome, PartNumber, Quantidade, Preco) VALUES (@Nome, @PartNumber, @Quantidade, @Preco)";
-        var parameters = new { request.Nome, request.PartNumber, request.Quantidade, request.Preco };
-
-        var result = await connection.ExecuteScalarAsync<int>(query, parameters);
-        return result;
+        using var connection = _context.CreateConnection();
+        var query = "INSERT INTO produtos (Nome, PartNumber, Quantidade, Preco) VALUES (@Nome, @PartNumber, @Quantidade, @Preco); SELECT LAST_INSERT_ID();";
+        return await connection.ExecuteScalarAsync<int>(query, request);
     }
 }
