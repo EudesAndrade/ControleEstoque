@@ -1,9 +1,14 @@
-# Ignorar arquivos de build e configuração
-ControlEstoque/bin/
-ControlEstoque/obj/
-ControlEstoque/.vs/
-.vs/
+# Ignorar pastas de build do .NET
+bin/
+obj/
+**/bin/
+**/obj/
 
-# Ignorar arquivos específicos
-*.exe
-*.dll
+# Ignorar arquivos temporários
+*.pdb
+*.cache
+*.sourcelink.json
+
+# Ignorar configurações do Visual Studio
+.vscode/
+*.vs/
