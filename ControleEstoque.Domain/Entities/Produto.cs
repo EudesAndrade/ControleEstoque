@@ -81,5 +81,10 @@ namespace ControleEstoque.Domain.Entities
         {
             CustoTotal = Quantidade * Preco;
         }
+
+        public void SetId(int id)
+        {
+            Id = id;
+        }
     }
 }

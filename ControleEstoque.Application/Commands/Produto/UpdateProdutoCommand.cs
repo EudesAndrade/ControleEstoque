@@ -2,17 +2,19 @@
 
 namespace ControleEstoque.Application.Commands.Produto
 {
-    public class CreateProdutoCommand : IRequest<int>
+    public class UpdateProdutoCommand : IRequest<bool>
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string PartNumber { get; set; }
         public int Quantidade { get; set; }
         public decimal Preco { get; set; }
 
-        public CreateProdutoCommand() { }
+        public UpdateProdutoCommand() { }
 
-        public CreateProdutoCommand(string nome, string partNumber, int quantidade, decimal preco)
+        public UpdateProdutoCommand(int id, string nome, string partNumber, int quantidade, decimal preco)
         {
+            Id = id;
             Nome = nome;
             PartNumber = partNumber;
             Quantidade = quantidade;
