@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Infrastructure", "..\ControleEstoque.Infrastructure\ControleEstoque.Infrastructure.csproj", "{256879BC-8FB1-4958-8760-019DDDE5E716}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Domain", "..\ControleEstoque.Domain\ControleEstoque.Domain.csproj", "{88D4093E-4576-4447-BAC8-CC5158F6A85A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{256879BC-8FB1-4958-8760-019DDDE5E716}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{256879BC-8FB1-4958-8760-019DDDE5E716}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{256879BC-8FB1-4958-8760-019DDDE5E716}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88D4093E-4576-4447-BAC8-CC5158F6A85A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88D4093E-4576-4447-BAC8-CC5158F6A85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88D4093E-4576-4447-BAC8-CC5158F6A85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88D4093E-4576-4447-BAC8-CC5158F6A85A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
