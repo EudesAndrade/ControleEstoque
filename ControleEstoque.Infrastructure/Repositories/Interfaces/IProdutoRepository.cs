@@ -9,5 +9,7 @@ namespace ControleEstoque.Infrastructure.Repositories.Interfaces
         Task<bool> DeletarProdutoAsync(int id);
         Task<Produto?> ObterProdutoPorIdAsync(int id);
         Task<IEnumerable<Produto>> ObterTodosProdutosAsync();
+        Task<bool> ConsumirEstoqueAsync(int id, int quantidade);
+        Task<bool> ReporEstoqueAsync(int id, int quantidade, decimal preco);
     }
 }

@@ -19,6 +19,8 @@ namespace ControleEstoque.Domain.Entities
         [Range(0.01, double.MaxValue, ErrorMessage = "O preço deve ser maior que zero.")]
         public decimal Preco { get; set; }
 
+        public decimal CustoTotal { get; set; }
+
         // Construtor padrão exigido pelo Dapper
         public Produto() {
 
@@ -37,6 +39,7 @@ namespace ControleEstoque.Domain.Entities
             PartNumber = partNumber;
             Quantidade = quantidade;
             Preco = preco;
+            CustoTotal = quantidade * preco;
         }
 
         public void AtualizarPreco(decimal novoPreco)
@@ -45,6 +48,38 @@ namespace ControleEstoque.Domain.Entities
                 throw new ArgumentException("O preço deve ser maior que zero.");
 
             Preco = novoPreco;
+            AtualizarCustoTotal();
+        }
+
+        public void ConsumirEstoque(int quantidadeConsumida)
+        {
+            if (quantidadeConsumida > Quantidade)
+                throw new EstoqueInsuficienteException("Estoque insuficiente para consumo.");
+
+            Quantidade -= quantidadeConsumida;
+            AtualizarCustoTotal();
+        }
+
+        public void ReporEstoque(int quantidadeAdicional, decimal precoCusto)
+        {
+            if (quantidadeAdicional <= 0)
+                throw new ArgumentException("A quantidade deve ser maior que zero.");
+
+            Preco = CalcularCustoMedio(quantidadeAdicional, precoCusto);
+            Quantidade += quantidadeAdicional;
+            AtualizarCustoTotal();
+        }
+
+        private decimal CalcularCustoMedio(int novaQuantidade, decimal novoPreco)
+        {
+            decimal totalCustoAtual = Quantidade * Preco;
+            decimal totalCustoNovo = novaQuantidade * novoPreco;
+            return (totalCustoAtual + totalCustoNovo) / (Quantidade + novaQuantidade);
+        }
+
+        private void AtualizarCustoTotal()
+        {
+            CustoTotal = Quantidade * Preco;
         }
     }
 }

@@ -54,11 +54,18 @@ app.MapGet("/produtos", async (IProdutoRepository produtoRepo) =>
 });
 
 // Endpoint para adicionar um novo produto
-app.MapPost("/produtos", async (Produto produto, IProdutoRepository produtoRepo) =>
+app.MapPost("/produtos", async (ProdutoCreateDto produtoDto, IProdutoRepository produtoRepo) =>
 {
+    // Criando uma instância da entidade Produto com os dados do DTO
+    var produto = new Produto(produtoDto.Nome, produtoDto.PartNumber, produtoDto.Quantidade, produtoDto.Preco);
+
+    // Adicionando o produto ao banco de dados
     var id = await produtoRepo.AdicionarProdutoAsync(produto);
+
+    // Retornando o resultado com a URL do novo produto criado
     return Results.Created($"/produtos/{id}", produto);
 });
+
 
 // Endpoint para atualizar um produto existente
 app.MapPut("/produtos/{id}", async (int id, Produto produto, IProdutoRepository produtoRepo) =>
@@ -81,6 +88,21 @@ app.MapDelete("/produtos/{id}", async (int id, IProdutoRepository produtoRepo) =
 {
     var removido = await produtoRepo.DeletarProdutoAsync(id);
     return removido ? Results.Ok("Produto removido com sucesso.") : Results.NotFound("Produto não encontrado.");
+});
+
+// Endpoint para consumir estoque de um produto específico.
+app.MapPut("/produtos/{id}/consumir", async (int id, int quantidade, IProdutoRepository produtoRepo) =>
+{
+    var sucesso = await produtoRepo.ConsumirEstoqueAsync(id, quantidade);
+    return sucesso ? Results.Ok("Estoque atualizado com sucesso.") : Results.BadRequest("Estoque insuficiente.");
+});
+
+// Endpoint para repor estoque de um produto específico.
+// O preço médio é atualizado automaticamente com base no novo custo.
+app.MapPut("/produtos/{id}/repor", async (int id, int quantidade, decimal preco, IProdutoRepository produtoRepo) =>
+{
+    var sucesso = await produtoRepo.ReporEstoqueAsync(id, quantidade, preco);
+    return sucesso ? Results.Ok("Estoque reposto com sucesso.") : Results.BadRequest("Erro ao repor estoque.");
 });
 
 // Endpoint para testar conexão com o banco
