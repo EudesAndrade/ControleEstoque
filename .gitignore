@@ -1,14 +1,17 @@
-# Ignorar pastas de build do .NET
-bin/
-obj/
+# Pastas de build do .NET
 **/bin/
 **/obj/
 
-# Ignorar arquivos temporários
+# Arquivos de depuração e logs
 *.pdb
+*.log
 *.cache
 *.sourcelink.json
 
-# Ignorar configurações do Visual Studio
+# Configurações do Visual Studio
 .vscode/
 *.vs/
+
+# Arquivos temporários do sistema
+Thumbs.db
+*.tmp
