@@ -1,12 +1,12 @@
 ﻿using System.Data;
-using MySqlConnector;
+using MySqlConnector;  // Certifique-se que o pacote MySqlConnector está instalado
 using Microsoft.Extensions.Configuration;
 
 
 
 namespace ControleEstoque.Infrastructure
 {
-    public class DapperContext
+    public class DapperContext : IDapperContext
     {
         private readonly string _connectionString;
 
@@ -15,6 +15,10 @@ namespace ControleEstoque.Infrastructure
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
-        public IDbConnection CreateConnection() => new MySqlConnection(_connectionString);
+        public  IDbConnection CreateConnection()
+        {
+            return new MySqlConnection(_connectionString);
+        }
+        //IDbConnection CreateConnection() => new MySqlConnection(_connectionString);
     }
 }

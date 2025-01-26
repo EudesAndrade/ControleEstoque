@@ -1,0 +1,13 @@
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\bin\Debug\net8.0\ControleEstoque.Infrastructure.deps.json
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\bin\Debug\net8.0\ControleEstoque.Infrastructure.dll
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\bin\Debug\net8.0\ControleEstoque.Infrastructure.pdb
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\ControleEstoque.Infrastructure.csproj.AssemblyReference.cache
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\ControleEstoque.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\ControleEstoque.Infrastructure.AssemblyInfoInputs.cache
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\ControleEstoque.Infrastructure.AssemblyInfo.cs
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\ControleEstoque.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\ControleEstoque.Infrastructure.sourcelink.json
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\ControleEstoque.Infrastructure.dll
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\refint\ControleEstoque.Infrastructure.dll
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\ControleEstoque.Infrastructure.pdb
+C:\Dicas\Desafio\ControleEstoque\ControleEstoque.Infrastructure\obj\Debug\net8.0\ref\ControleEstoque.Infrastructure.dll

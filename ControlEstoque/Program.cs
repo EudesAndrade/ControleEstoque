@@ -2,11 +2,15 @@ using ControleEstoque.Infrastructure;
 using System.Data;
 using MySqlConnector;
 using Dapper;
+using MediatR;
+using ControleEstoque.Infrastructure;
+using ControleEstoque.Application.Commands.Produto;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Adicionar serviço de conexão ao banco de dados MySQL usando Dapper
 builder.Services.AddSingleton<DapperContext>();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(CreateProdutoCommand).Assembly));
 builder.Services.AddScoped<IDbConnection>(sp =>
     new MySqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 

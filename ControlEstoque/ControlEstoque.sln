@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Tests", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Application", "..\ControleEstoque.Application\ControleEstoque.Application.csproj", "{087DA412-B170-4A89-A617-C8A77B57A6BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Infrastructure", "..\ControleEstoque.Infrastructure\ControleEstoque.Infrastructure.csproj", "{256879BC-8FB1-4958-8760-019DDDE5E716}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{087DA412-B170-4A89-A617-C8A77B57A6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{087DA412-B170-4A89-A617-C8A77B57A6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{087DA412-B170-4A89-A617-C8A77B57A6BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{256879BC-8FB1-4958-8760-019DDDE5E716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{256879BC-8FB1-4958-8760-019DDDE5E716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{256879BC-8FB1-4958-8760-019DDDE5E716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{256879BC-8FB1-4958-8760-019DDDE5E716}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
