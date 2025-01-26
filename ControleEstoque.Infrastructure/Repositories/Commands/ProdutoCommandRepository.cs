@@ -1,16 +1,20 @@
-﻿using ControleEstoque.Infrastructure.Repositories.Interfaces;
-using ControleEstoque.Domain.Entities;
+﻿using ControleEstoque.Domain.Entities;
+using ControleEstoque.Infrastructure.Interfaces;
 using Dapper;
+using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ControleEstoque.Infrastructure.Repositories
+namespace ControleEstoque.Infrastructure.Repositories.Commands
 {
-    public class ProdutoRepository : IProdutoRepository
+    public class ProdutoCommandRepository : IProdutoCommandRepository
     {
         private readonly IDbConnection _dbConnection;
 
-        public ProdutoRepository(IDbConnection dbConnection)
+        public ProdutoCommandRepository(IDbConnection dbConnection)
         {
             _dbConnection = dbConnection;
         }
@@ -70,28 +74,16 @@ namespace ControleEstoque.Infrastructure.Repositories
 
         public async Task<bool> DeletarProdutoAsync(int id)
         {
-            var query = "DELETE FROM produtos WHERE ID = @Id";
+            var query = "DELETE FROM produtos WHERE id = @Id";
             var result = await _dbConnection.ExecuteAsync(query, new { Id = id });
             return result > 0;
-        }
-
-        public async Task<Produto?> ObterProdutoPorIdAsync(int id)
-        {
-            var query = "SELECT * FROM produtos WHERE ID = @Id";
-            return await _dbConnection.QueryFirstOrDefaultAsync<Produto>(query, new { Id = id });
-        }
-
-        public async Task<IEnumerable<Produto>> ObterTodosProdutosAsync()
-        {
-            var query = "SELECT id, nome, partNumber AS PartNumber, quantidade, preco, custoTotal FROM produtos";
-            return await _dbConnection.QueryAsync<Produto>(query);
         }
 
         public async Task<bool> ConsumirEstoqueAsync(int id, int quantidade)
         {
             var query = @"UPDATE produtos 
-                  SET quantidade = quantidade - @Quantidade 
-                  WHERE id = @Id AND quantidade >= @Quantidade";
+                      SET quantidade = quantidade - @Quantidade 
+                      WHERE id = @Id AND quantidade >= @Quantidade;";
 
             var result = await _dbConnection.ExecuteAsync(query, new { Id = id, Quantidade = quantidade });
             return result > 0;

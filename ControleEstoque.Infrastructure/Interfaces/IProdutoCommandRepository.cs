@@ -1,14 +1,17 @@
 ﻿using ControleEstoque.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ControleEstoque.Infrastructure.Repositories.Interfaces
+namespace ControleEstoque.Infrastructure.Interfaces
 {
-    public interface IProdutoRepository
+    public interface IProdutoCommandRepository
     {
         Task<int> AdicionarProdutoAsync(Produto produto);
         Task<bool> AtualizarProdutoAsync(Produto produto);
         Task<bool> DeletarProdutoAsync(int id);
-        Task<Produto?> ObterProdutoPorIdAsync(int id);
-        Task<IEnumerable<Produto>> ObterTodosProdutosAsync();
         Task<bool> ConsumirEstoqueAsync(int id, int quantidade);
         Task<bool> ReporEstoqueAsync(int id, int quantidade, decimal preco);
     }

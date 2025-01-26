@@ -1,8 +1,9 @@
 ﻿using System.Data;
 using MySqlConnector;
 using Microsoft.Extensions.Configuration;
+using ControleEstoque.Infrastructure.Interfaces;
 
-namespace ControleEstoque.Infrastructure
+namespace ControleEstoque.Infrastructure.Context
 {
     public class DapperContext : IDapperContext
     {
