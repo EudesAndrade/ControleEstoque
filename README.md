@@ -24,7 +24,7 @@ Segue o padrão **Clean Architecture** e **CQRS**, garantindo separação de res
 1. **ControleEstoque.Application** (Lógica de negócios com CQRS)
 2. **ControleEstoque.Domain** (Entidades e regras de negócio)
 3. **ControleEstoque.Infrastructure** (Repositórios com Dapper)
-4. **ControleEstoque.API** (Exposição de endpoints REST)
+4. **ControleEstoque** (Exposição de endpoints REST)
 5. **ControleEstoque.Tests** (Testes unitários com xUnit)
 
 ## 4. Funcionalidades Implementadas
