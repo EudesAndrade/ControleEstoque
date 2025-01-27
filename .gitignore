@@ -1,0 +1,17 @@
+# Pastas de build do .NET
+**/bin/
+**/obj/
+
+# Arquivos de depuração e logs
+*.pdb
+*.log
+*.cache
+*.sourcelink.json
+
+# Configurações do Visual Studio
+.vscode/
+*.vs/
+
+# Arquivos temporários do sistema
+Thumbs.db
+*.tmp
