@@ -5,33 +5,20 @@ using System.Threading.Tasks;
 using ControleEstoque.Application.Commands.Produto;
 using Dapper;
 using ControleEstoque.Infrastructure.Interfaces;
+using ControleEstoque.Domain.Entities;
 
 public class CreateProdutoCommandHandler : IRequestHandler<CreateProdutoCommand, int>
 {
-    private readonly IDapperContext _context;
+    private readonly IProdutoCommandRepository _produtoRepository;
 
-    public CreateProdutoCommandHandler(IDapperContext context)
+    public CreateProdutoCommandHandler(IProdutoCommandRepository produtoRepository)
     {
-        _context = context;
+        _produtoRepository = produtoRepository;
     }
 
     public async Task<int> Handle(CreateProdutoCommand request, CancellationToken cancellationToken)
     {
-        if (string.IsNullOrWhiteSpace(request.Nome))
-            throw new ArgumentException("O nome do produto é obrigatório.");
-
-        if (string.IsNullOrWhiteSpace(request.PartNumber))
-            throw new ArgumentException("O PartNumber é obrigatório.");
-
-        if (request.Quantidade <= 0)
-            throw new ArgumentException("A quantidade deve ser maior que zero.");
-
-        if (request.Preco <= 0)
-            throw new ArgumentException("O preço deve ser maior que zero.");
-
-        using var connection = _context.CreateConnection();
-        var query = "INSERT INTO produtos (Nome, PartNumber, Quantidade, Preco) VALUES (@Nome, @PartNumber, @Quantidade, @Preco); SELECT LAST_INSERT_ID();";
-
-        return await connection.ExecuteScalarAsync<int>(query, request);
+        var produto = new Produto(request.Nome, request.PartNumber, request.Quantidade, request.Preco);
+        return await _produtoRepository.AdicionarProdutoAsync(produto);
     }
 }

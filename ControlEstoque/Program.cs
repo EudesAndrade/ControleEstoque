@@ -85,7 +85,7 @@ app.MapDelete("/produtos/{id}", async (int id, IMediator mediator) =>
 // Endpoint para consumir estoque de um produto específico.
 app.MapPut("/produtos/{id}/consumir", async (int id, int quantidade, IMediator mediator) =>
 {
-    var command = new ConsumirEstoqueCommand { Id = id, Quantidade = quantidade };
+    var command = new ConsumirEstoqueCommand(id, quantidade);
     var sucesso = await mediator.Send(command);
     return sucesso ? Results.Ok("Estoque atualizado com sucesso.") : Results.BadRequest("Estoque insuficiente.");
 });
@@ -94,7 +94,7 @@ app.MapPut("/produtos/{id}/consumir", async (int id, int quantidade, IMediator m
 // O preço médio é atualizado automaticamente com base no novo custo.
 app.MapPut("/produtos/{id}/repor", async (int id, int quantidade, decimal preco, IMediator mediator) =>
 {
-    var command = new ReporEstoqueCommand { Id = id, Quantidade = quantidade, Preco = preco };
+    var command = new ReporEstoqueCommand(id, quantidade, preco);
     var sucesso = await mediator.Send(command);
     return sucesso ? Results.Ok("Estoque reposto com sucesso.") : Results.BadRequest("Erro ao repor estoque.");
 });
